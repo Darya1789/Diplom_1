@@ -4,10 +4,7 @@ from praktikum.ingredient_types import *
 
 class TestBurger:
 
-    def test_set_buns(self):
-        mock_bun = Mock()
-        mock_bun.name = "black bun"
-        mock_bun.price = 100
+    def test_set_buns(self, mock_bun):
         burger = Burger()
         burger.set_buns(mock_bun)
         assert burger.bun == mock_bun
@@ -69,10 +66,8 @@ class TestBurger:
         price = burger.get_price()
         assert price == 400
 
-    def test_get_receipt(self):
-        mock_bun = Mock()
-        mock_bun.get_name.return_value = 'Булочка'
-        mock_bun.get_price.return_value = 50
+    def test_get_receipt(self, mock_bun):
+        
         mock_ingredient1 = Mock()
         mock_ingredient1.get_type.return_value = INGREDIENT_TYPE_FILLING
         mock_ingredient1.get_name.return_value = 'Начинка1'
